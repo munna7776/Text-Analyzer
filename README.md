@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+My first Project using React Js is Text Analyzer App with toggle dark theme option. Text Analyzer has tools like convert to upper case , lower case , remove extra space , clear text in the field and copy all the text inside the field.
 
 ## Available Scripts
 
