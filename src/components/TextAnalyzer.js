@@ -43,18 +43,18 @@ export default function TextAnalyzer(props) {
                         </textarea>
                     </div>
                     <div className="d-flex">
-                        <button type="button" className="btn btn-primary" onClick={handleUpperCase}>Convert To UpperCase</button>
-                        <button type="button" className="btn btn-primary mx-1" onClick={handleLowerCase}>Convert To LowerCase</button>
-                        <button type="button" className="btn btn-primary" onClick={handleExtraSpace}>Remove Extra Space</button>   
-                        <button type="button" className="btn btn-primary mx-1" onClick={handleCopyText}>{buttonText}</button>   
-                        <button type="button" className="btn btn-primary" onClick={handleClearText}>Clear Text</button>  
+                        <button disabled={text.length===0} type="button" className="btn btn-primary" onClick={handleUpperCase}>Convert To UpperCase</button>
+                        <button disabled={text.length===0} type="button" className="btn btn-primary mx-1" onClick={handleLowerCase}>Convert To LowerCase</button>
+                        <button disabled={text.length===0} type="button" className="btn btn-primary" onClick={handleExtraSpace}>Remove Extra Space</button>   
+                        <button disabled={text.length===0} type="button" className="btn btn-primary mx-1" onClick={handleCopyText}>{buttonText}</button>   
+                        <button disabled={text.length===0} type="button" className="btn btn-primary" onClick={handleClearText}>Clear Text</button>  
                     </div>
                 </div>
                 <div className={`container mt-3 text-center text-${props.mode==='light'?'dark':'light'}`}>
                     <h2>Text Analysis</h2>
-                    <p>Number of words - {text.split(" ").length}</p>
+                    <p>Number of words - {text.split(/\s+/).filter((e)=>{return e.length!==0;}).length}</p>
                     <p>Number of characters - {text.length}</p>
-                    <p>Reading time of text - {0.008*text.split(" ").length}</p>
+                    <p>Reading time of text - {0.008*text.split(/\s+/).filter((e)=>{return e.length!==0;}).length}</p>
                 </div>
             </div>
         </>
