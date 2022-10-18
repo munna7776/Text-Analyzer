@@ -1,25 +1,29 @@
 import React,{useState} from 'react'
 
-export default function TextAnalyzer(props) {
+type TextAnalyzerProps = {
+    mode: string
+}
+
+export default function TextAnalyzer(props: TextAnalyzerProps) {
     const initialState = "Copy to Clipboard"
-    const [text, setText] = useState("Enter your text here");
-    const [buttonText, setButtonText] = useState(initialState);
-    const handleChange=(e)=>{
+    const [text, setText] = useState<string>("Enter your text here");
+    const [buttonText, setButtonText] = useState<string>(initialState);
+    const handleChange=(e: React.ChangeEvent<HTMLTextAreaElement>): void=>{
         setText(e.target.value);
     }
-    const handleUpperCase=()=>{
+    const handleUpperCase=(): void =>{
         let newText = text.toUpperCase();
         setText(newText);
     }
-    const handleLowerCase = ()=>{
+    const handleLowerCase = (): void =>{
         let newText = text.toLowerCase();
         setText(newText);
     }
-    const handleExtraSpace=()=>{
+    const handleExtraSpace=(): void =>{
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "));
     }
-    const handleCopyText=()=>{
+    const handleCopyText=(): void =>{
         navigator.clipboard.writeText(text);
         setButtonText("Copied to clipboard");
         setTimeout(() => {
@@ -27,7 +31,7 @@ export default function TextAnalyzer(props) {
         }, 2000);
     }
 
-    const handleClearText = ()=>{
+    const handleClearText = (): void =>{
         let newText='';
         setText(newText);
     }
@@ -37,7 +41,7 @@ export default function TextAnalyzer(props) {
                 <div className="container d-flex flex-column align-items-center">
                     <h1 className={`text-center mt-2 text-${props.mode==='light'?'dark':'light'}`}>Text Analyzer</h1>
                     <div className="mb-3">
-                        <textarea className="form-control shadow-lg p-3 rounded" id="textForm" rows="8" cols="100" value={text} onChange={handleChange}
+                        <textarea className="form-control shadow-lg p-3 rounded" id="textForm" rows={8} cols={100} value={text} onChange={handleChange}
                         style={{ backgroundColor:props.mode==='dark'?'black':'white',color:props.mode==='dark'?'red':'black',border:props.mode==='dark'?'2px solid black':''}}>
                             {text}
                         </textarea>

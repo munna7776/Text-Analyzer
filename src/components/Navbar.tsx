@@ -1,6 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-export default function Navbar(props) {
+type NavbarProps = {
+    title: string,
+    mode: string,
+    toggleMode: () => void
+}
+
+export default function Navbar(props: NavbarProps) {
     return (
         <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
             <div className="container-fluid">
